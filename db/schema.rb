@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_26_131912) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_26_134718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_131912) do
     t.datetime "updated_at", null: false
     t.index ["dog_id"], name: "index_appointments_on_dog_id"
     t.index ["stablishment_id"], name: "index_appointments_on_stablishment_id"
+  end
+
+  create_table "basics", force: :cascade do |t|
+    t.bigint "dog_id", null: false
+    t.string "type"
+    t.integer "reminder"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_basics_on_dog_id"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.bigint "dog_id", null: false
+    t.string "name"
+    t.string "type"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_documents_on_dog_id"
   end
 
   create_table "dogs", force: :cascade do |t|
@@ -38,6 +57,45 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_131912) do
   create_table "dogs_users", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "dog_id", null: false
+  end
+
+  create_table "illnesses", force: :cascade do |t|
+    t.bigint "dog_id", null: false
+    t.string "name"
+    t.string "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_illnesses_on_dog_id"
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.bigint "dog_id", null: false
+    t.string "type"
+    t.integer "quantity"
+    t.time "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_meals_on_dog_id"
+  end
+
+  create_table "medications", force: :cascade do |t|
+    t.bigint "dog_id", null: false
+    t.string "type"
+    t.time "time"
+    t.integer "reminder"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_medications_on_dog_id"
+  end
+
+  create_table "poops", force: :cascade do |t|
+    t.bigint "dog_id", null: false
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_poops_on_dog_id"
   end
 
   create_table "stablishments", force: :cascade do |t|
@@ -62,6 +120,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_131912) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "walks", force: :cascade do |t|
+    t.bigint "dog_id", null: false
+    t.string "type"
+    t.integer "distance"
+    t.integer "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_walks_on_dog_id"
+  end
+
   add_foreign_key "appointments", "dogs"
   add_foreign_key "appointments", "stablishments"
+  add_foreign_key "basics", "dogs"
+  add_foreign_key "documents", "dogs"
+  add_foreign_key "illnesses", "dogs"
+  add_foreign_key "meals", "dogs"
+  add_foreign_key "medications", "dogs"
+  add_foreign_key "poops", "dogs"
+  add_foreign_key "walks", "dogs"
 end
