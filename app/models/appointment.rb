@@ -1,6 +1,7 @@
 class Appointment < ApplicationRecord
-  belongs_to :dog
-  belongs_to :stablishment
+  has_many :appointments_dogs, dependent: :destroy
+  has_many :dogs, through: :appointments_dogs
+  belongs_to :establishment
 
-  validates :description, length: { maximum: 500 }
+  accepts_nested_attributes_for :appointments_dogs
 end
