@@ -13,7 +13,24 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <nav class="flex-basic">
+      <h1>LOGO</h1>
+      <% if user_signed_in? %>
+        <div class="flex-basic">
+          <p><%= current_user.name %></p>
+          <p class="avatar" onClick="document.getElementById('dropdown').classList.toggle('show')">
+            image</p>
+        </div>
+      <% else %>
+        <%= link_to "Login", new_user_session_path %>
+      <% end %>
 
+      <ul id="dropdown">
+        <li>option</li>
+        <li>option</li>
+        <li>option</li>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>
