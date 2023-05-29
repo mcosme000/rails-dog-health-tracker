@@ -1,7 +1,7 @@
 <div class="container">
   <p><%= link_to "Back", dashboard_path %></p>
 
-  <p>Register a new doggo</p>
+  <p>Edit <%= @dog.name %></p>
 
   <%= simple_form_for @dog do |f| %>
     <%= f.input :name %>
