@@ -6,7 +6,14 @@
 
 body {
   background: rgb(233, 233, 233);
+  height: 100vh;
 }
+
+main {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 li {
   list-style: none;
 }
