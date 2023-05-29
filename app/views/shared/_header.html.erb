@@ -1,0 +1,20 @@
+<nav class="flex-basic">
+  <h1>LOGO</h1>
+  <% if user_signed_in? %>
+    <div class="flex-basic">
+      <p><%= current_user.name %></p>
+      <p class="avatar" onClick="document.getElementById('dropdown').classList.toggle('show')">
+        image</p>
+    </div>
+  <% else %>
+    <%= link_to "Login", new_user_session_path %>
+  <% end %>
+
+  <ul id="dropdown">
+    <%= link_to new_dog_path do %>
+      <li>Register dog</li>
+    <% end %>
+    <li>option</li>
+    <li>option</li>
+  </ul>
+</nav>
