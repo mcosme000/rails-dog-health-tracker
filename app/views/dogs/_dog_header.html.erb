@@ -1,0 +1,9 @@
+<div class="dog-header">
+  <div class="dog-header-content flex-basic">
+    <%= link_to dashboard_path do %>
+      <p><i class="fa-solid fa-arrow-left"></i> Go back</p>
+    <% end %>
+    <h3><%= @dog.name %></h3>
+    <%= render "shared/dropdown" %>
+  </div>
+</div>

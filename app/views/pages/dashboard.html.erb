@@ -1,30 +1,21 @@
-<div class="container">
+<main>
 
-  <section>
-    <div class="dogs-container flex-basic">
-      <% @dogs.each do |dog| %>
-        <%=  link_to dog_path(dog) do %>
-          <div class="avatar"></div>
+  <div class="container">
+
+    <section>
+      <div class="dogs-container flex-basic">
+        <% @dogs.each do |dog| %>
+          <%=  link_to dog_path(dog) do %>
+            <div class="avatar"></div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
-  </section>
+      </div>
+    </section>
 
+    <%= render "reminders" %>
 
-  <section>
-    <h5>Your reminders</h5>
-    <div class="reminders">
+    <%= render "actions" %>
 
-    </div>
-  </section>
+  </div>
 
-  <section>
-    <div class="actions">
-      <div>Basics</div>
-      <div>Meals</div>
-      <div>Walks</div>
-      <div>Medications</div>
-    </div>
-  </section>
-
-</div>
+</main>

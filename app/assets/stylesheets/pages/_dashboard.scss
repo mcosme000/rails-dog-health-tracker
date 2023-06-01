@@ -1,0 +1,16 @@
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  div {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    background: rgb(93, 144, 93);
+    display: grid;
+    align-items: center;
+    text-align: center;
+  }
+}
