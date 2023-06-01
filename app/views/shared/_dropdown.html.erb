@@ -1,0 +1,17 @@
+<div class="dropdown-container">
+  <i class="fa-solid fa-bars menu-icon" onClick="document.getElementById('dropdown').classList.toggle('show')"></i>
+  <ul id="dropdown">
+    <%= link_to "#" do %>
+      <li class="first">Achievements</li>
+    <% end %>
+    <%= link_to "#" do %>
+      <li>Address Book</li>
+    <% end %>
+    <%= link_to new_dog_path do %>
+      <li>Register dog</li>
+    <% end %>
+    <%= link_to "#" do %>
+      <li class="last">Log out</li>
+    <% end %>
+  </ul>
+</div>
