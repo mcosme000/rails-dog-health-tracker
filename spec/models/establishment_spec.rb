@@ -6,4 +6,9 @@ RSpec.describe Establishment, type: :model do
     Establishment.reset_phone_number(establishment)
     expect(establishment.phone_number).to eq("123456")
   end
+
+  it "Phone number shorter than 15 characters" do
+    establishment = FactoryBot.create(:establishment)
+    expect(establishment.phone_number.length).to be < 15
+  end
 end
