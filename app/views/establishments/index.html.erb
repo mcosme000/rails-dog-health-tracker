@@ -1,0 +1,20 @@
+<main>
+
+  <div class="container">
+
+    <%= link_to new_establishment_path do %>
+      <button class="btn">Register establishment</button>
+    <% end %>
+
+    <div class="establishments-container">
+      <% @establishments.each do |n| %>
+        <p><%= n.name %></p>
+        <p><%= n.address %></p>
+        <p><%= n.phone_number %></p>
+        <p> - - - - - - - - - - - - </p>
+      <% end %>
+
+    </div>
+  </div>
+
+</main>

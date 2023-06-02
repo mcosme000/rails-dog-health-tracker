@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
 
   resources :dogs
+  resources :establishments
 end
