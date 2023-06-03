@@ -3,16 +3,20 @@ User.destroy_all
 
 p "1. CREATING DOGS"
 
-dog1 = Dog.create({ name: "Ponchan",
+dog1 = Dog.create({
+    name: "Ponchan",
     breed: "mix",
     age: 7,
-    weight: 18 })
+    weight: 18,
+    birthday: '2016/07/06' })
 
 p "Created dog 1"
-dog2 = Dog.create({ name: "Suchan",
+dog2 = Dog.create({
+    name: "Suchan",
     breed: "mix",
     age: 4,
-    weight: 12 })
+    weight: 12,
+    birthday: '2018/11/20'})
 
 p "Created dog 2"
 
@@ -74,23 +78,32 @@ half_breakfast.meal = half
 half_breakfast.dogs << dog1
 half_breakfast.save
 
-p "Created breakfast for dog 1"
-
-full_breakfast = Care.create()
-full_breakfast.meal = full
-full_breakfast.dogs << dog2
-full_breakfast.save
-
-p "Created breakfast for dog 2"
-
-p "- - - - - - -"
 
 p "6. CREATING ESTABLISHMENTS"
 
-vet = Establishment.create({ name: "Nakayamajuika Clinic",
-  category: "vet",
-  address: "6-1 Minamifukurocho, Nara, 630-8342",
-  phone_number: "0742226049"
-})
+cities = ['Tokyo', 'Osaka', 'Wakayama', 'Nara', 'Kyoto', 'Kanazawa', 'Kobe', 'Ibaraki', 'Sapporo']
 
-p "Created vet"
+20.times do
+  p Faker::Company.name
+  p "#{Faker::Address.postcode}, #{Faker::Address.street_address} #{Faker::Address.building_number}, #{cities.sample}"
+  Establishment.create(
+    name: Faker::Company.name,
+    category: Faker::Company.industry,
+    address: "#{Faker::Address.postcode}, #{Faker::Address.street_address} #{Faker::Address.building_number}, #{cities.sample}",
+    phone_number: "12345678"
+  )
+  p "created!"
+end
+
+establishments = Establishment.all
+p establishments.sample
+dogs = Dog.all
+
+
+p "7. CREATING APPOINTMENTS"
+
+10.times do
+  Appointment.create(
+    establishment_id: establishments.sample.id
+  )
+end
