@@ -21,4 +21,16 @@ class Dog < ApplicationRecord
   validates :age, presence: true, numericality: { only_integer: true }
   validates :weight, presence: true, numericality: { only_integer: true }
   validates :birthday, presence: true
+
+  def sick?
+    self.sick
+  end
+
+  def is_sick
+    self.sick = true
+  end
+
+  def is_cured
+    self.sick = false
+  end
 end
