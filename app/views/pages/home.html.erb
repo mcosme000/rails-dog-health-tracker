@@ -1,2 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home">
+  <div class="home-container">
+    <div>
+      <div class="img-container">
+        <%= image_tag 'home-img.png' %>
+      </div>
+      <h5>Never miss anything about your dog's health</h5>
+    </div>
+    <div>
+      <%= link_to new_user_session_path do %>
+        <button class="btn white">Login</button>
+      <% end %>
+      <%= link_to new_user_registration_path do %>
+        <button class="btn white">Sign in</button>
+      <% end %>
+    </div>
+  </div>
+</div>
